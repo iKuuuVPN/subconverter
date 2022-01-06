@@ -306,22 +306,19 @@ void proxyToClash(std::vector<Proxy> &nodes, YAML::Node &yamlnode, const ProxyGr
                 break;
             case "ws"_hash:
                 singleproxy["network"] = x.TransferProtocol;
-                if(ext.clash_new_field_name)
-                {
-                    singleproxy["ws-opts"]["path"] = x.Path;
-                    if(!x.Host.empty())
-                        singleproxy["ws-opts"]["headers"]["Host"] = x.Host;
-                    if(!x.Edge.empty())
-                        singleproxy["ws-opts"]["headers"]["Edge"] = x.Edge;
-                }
-                else
-                {
-                    singleproxy["ws-path"] = x.Path;
-                    if(!x.Host.empty())
-                        singleproxy["ws-headers"]["Host"] = x.Host;
-                    if(!x.Edge.empty())
-                        singleproxy["ws-headers"]["Edge"] = x.Edge;
-                }
+                    
+                singleproxy["ws-opts"]["path"] = x.Path;
+                if(!x.Host.empty())
+                    singleproxy["ws-opts"]["headers"]["Host"] = x.Host;
+                if(!x.Edge.empty())
+                    singleproxy["ws-opts"]["headers"]["Edge"] = x.Edge;
+                    
+                singleproxy["ws-path"] = x.Path;
+                if(!x.Host.empty())
+                    singleproxy["ws-headers"]["Host"] = x.Host;
+                if(!x.Edge.empty())
+                    singleproxy["ws-headers"]["Edge"] = x.Edge;
+                    
                 break;
             case "http"_hash:
                 singleproxy["network"] = x.TransferProtocol;
